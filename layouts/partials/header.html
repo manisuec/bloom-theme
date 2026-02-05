@@ -1,0 +1,16 @@
+<nav>
+    <a href="{{ .Site.BaseURL }}" class="logo">
+        <div class="logo-icon">
+            {{ partial "icons/heart" . }}
+        </div>
+        <span class="logo-text">{{ .Site.Title }}</span>
+    </a>
+    <ul class="nav-links">
+        {{ range .Site.Menus.main }}
+        <li><a href="{{ .URL | relURL }}">{{ .Name }}</a></li>
+        {{ end }}
+    </ul>
+    {{ with .Site.Params.header.cta }}
+    <a href="{{ .url }}" class="nav-cta">{{ .text }}</a>
+    {{ end }}
+</nav>

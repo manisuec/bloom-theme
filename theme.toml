@@ -1,0 +1,10 @@
+name = "Bloom"
+license = "MIT"
+licenselink = "https://github.com/anomalyco/opencode/blob/main/LICENSE"
+description = "A clean, modern landing page theme for Hugo"
+homepage = "https://github.com/anomalyco/opencode"
+tags = ["landing", "minimal", "clean"]
+features = ["responsive", "customizable"]
+[author]
+  name = "Anomaly"
+  homepage = "https://anomaly.co"

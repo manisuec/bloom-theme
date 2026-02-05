@@ -1,0 +1,14 @@
+<footer class="footer">
+    <div class="footer-content">
+        <div class="footer-bottom">
+            <p class="copyright">&copy; {{ now.Format "2005" }} {{ .Site.Title }}. {{ i18n "allRightsReserved" | default "All rights reserved." }}</p>
+            <div class="social-links">
+                {{ range .Site.Params.social }}
+                <a href="{{ .url }}" class="social-link" aria-label="{{ .name }}">
+                    {{ partial (printf "icons/%s" .icon) . }}
+                </a>
+                {{ end }}
+            </div>
+        </div>
+    </div>
+</footer>

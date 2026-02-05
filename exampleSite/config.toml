@@ -1,0 +1,121 @@
+baseURL = "https://example.org/"
+languageCode = "en-us"
+title = "Parenting Quotient"
+theme = "bloom-hugo-theme"
+
+[params]
+  description = "Enhance Your Parenting Journey"
+
+  [params.hero]
+    badge = "Trusted by 50,000+ Parents"
+    title = "Enhance Your "
+    titleHighlight = "Parenting Journey"
+    description = "We provide expert advice, practical tips, and a supportive community to help you build strong relationships with your children and create a loving family environment."
+    
+    [params.hero.ctaPrimary]
+      text = "Explore Resources"
+      url = "#explore"
+      
+    [params.hero.ctaSecondary]
+      text = "Learn More"
+      url = "#learn"
+
+  [params.features]
+    title = "Expert Advice for Every Stage"
+    description = "Evidence-based resources and practical guidance to support you through every milestone of your parenting journey."
+    
+    [[params.features.items]]
+      icon = "heart"
+      title = "Pregnancy Care"
+      description = "Comprehensive guides on prenatal nutrition, trimester milestones, mental health, and preparing for your baby's arrival."
+      
+    [[params.features.items]]
+      icon = "check"
+      title = "Breastfeeding Support"
+      description = "Expert lactation guidance, feeding schedules, and troubleshooting tips for new mothers navigating the breastfeeding journey."
+      
+    [[params.features.items]]
+      icon = "dot"
+      title = "Child Development"
+      description = "Age-appropriate milestones, brain development insights, and activities to nurture your child's growth and potential."
+      
+    [[params.features.items]]
+      icon = "users"
+      title = "Parenting Community"
+      description = "Connect with fellow parents, share experiences, and find support in our moderated community forums and groups."
+
+  [params.resources]
+    enable = true
+    title = "Popular Resources"
+    description = "Explore our most loved articles, guides, and tools trusted by parents worldwide."
+    
+    [[params.resources.items]]
+      title = "Newborn Care Guide"
+      description = "Essential tips for caring for your newborn in the first months, from feeding to sleep routines."
+      url = "#"
+      linkText = "Read More"
+      
+    [[params.resources.items]]
+      title = "Toddler Nutrition"
+      description = "Healthy eating habits and practical recipes for picky eaters and growing bodies."
+      url = "#"
+      linkText = "Read More"
+      
+    [[params.resources.items]]
+      title = "Sleep Training Methods"
+      description = "Gentle approaches to help your child develop healthy sleep habits and routines."
+      url = "#"
+      linkText = "Read More"
+      
+    [[params.resources.items]]
+      title = "Positive Discipline"
+      description = "Build connection and cooperation with age-appropriate behavior guidance strategies."
+      url = "#"
+      linkText = "Read More"
+
+  [params.header]
+    cta = { text = "Get Started", url = "#" }
+
+  [[params.social]]
+    name = "Facebook"
+    url = "#"
+    icon = "facebook"
+    
+  [[params.social]]
+    name = "Instagram"
+    url = "#"
+    icon = "instagram"
+    
+  [[params.social]]
+    name = "X"
+    url = "#"
+    icon = "x"
+    
+  [[params.social]]
+    name = "Pinterest"
+    url = "#"
+    icon = "pinterest"
+
+[[menu.main]]
+  name = "About"
+  url = "#about"
+  
+[[menu.main]]
+  name = "Resources"
+  url = "#resources"
+  
+[[menu.main]]
+  name = "Community"
+  url = "#community"
+  
+[[menu.main]]
+  name = "Contact"
+  url = "#contact"
+
+[[menu.main]]
+  name = "Blog"
+  url = "/blog"
+
+[params.blog]
+  [params.blog.comments]
+    enable = false

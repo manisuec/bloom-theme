@@ -1,0 +1,66 @@
+{{ define "main" }}
+<section class="hero">
+    <div class="hero-content">
+        {{ with .Site.Params.hero }}
+        <span class="hero-badge">{{ .badge | default "Trusted by parents worldwide" }}</span>
+        <h1>{{ .title | default "Welcome" }}<span>{{ .titleHighlight | default "" }}</span></h1>
+        <p>{{ .description | default "A modern landing page theme" }}</p>
+        <div class="hero-cta">
+            {{ with .ctaPrimary }}
+            <a href="{{ .url }}" class="cta-primary">
+                {{ .text }}
+                {{ partial "icons/arrow-right" . }}
+            </a>
+            {{ end }}
+            {{ with .ctaSecondary }}
+            <a href="{{ .url }}" class="cta-secondary">{{ .text }}</a>
+            {{ end }}
+        </div>
+        {{ end }}
+    </div>
+    <div class="hero-image">
+        <div class="hero-visual">
+            {{ partial "icons/heart" . }}
+        </div>
+    </div>
+</section>
+
+<section class="features" id="features">
+    <div class="section-header">
+        <h2>{{ .Site.Params.features.title | default "Features" }}</h2>
+        <p>{{ .Site.Params.features.description | default "What makes us different" }}</p>
+    </div>
+    <div class="features-grid">
+        {{ range $index, $feature := .Site.Params.features.items }}
+        <div class="feature-card">
+            <div class="feature-icon">
+                {{ partial (printf "icons/%s" $feature.icon) $feature }}
+            </div>
+            <h3>{{ $feature.title }}</h3>
+            <p>{{ $feature.description }}</p>
+        </div>
+        {{ end }}
+    </div>
+</section>
+
+{{ if .Site.Params.resources.enable | default true }}
+<section class="resources" id="resources">
+    <div class="section-header">
+        <h2>{{ .Site.Params.resources.title | default "Resources" }}</h2>
+        <p>{{ .Site.Params.resources.description | default "Explore our popular content" }}</p>
+    </div>
+    <div class="resources-grid">
+        {{ range $index, $resource := .Site.Params.resources.items }}
+        <div class="resource-card">
+            <h4>{{ $resource.title }}</h4>
+            <p>{{ $resource.description }}</p>
+            <a href="{{ $resource.url }}" class="resource-link">
+                {{ $resource.linkText | default "Read More" }}
+                {{ partial "icons/arrow-right" . }}
+            </a>
+        </div>
+        {{ end }}
+    </div>
+</section>
+{{ end }}
+{{ end }}

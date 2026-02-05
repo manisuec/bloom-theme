@@ -1,0 +1,105 @@
+{{ define "main" }}
+<article class="blog-post">
+    <header class="blog-header">
+        {{ with .Params.categories }}
+        <div class="blog-categories">
+            {{ range . }}
+            <a href="/categories/{{ . | urlize }}" class="blog-category">{{ . }}</a>
+            {{ end }}
+        </div>
+        {{ end }}
+        
+        <h1 class="blog-title">{{ .Title }}</h1>
+        
+        <div class="blog-meta">
+            {{ if .Params.author }}
+            <span class="blog-author">
+                {{ partial "icons/user" . }}
+                {{ .Params.author }}
+            </span>
+            {{ end }}
+            
+            <span class="blog-date">
+                {{ partial "icons/calendar" . }}
+                {{ .Date.Format "January 2, 2006" }}
+            </span>
+            
+            {{ with .Params.readTime }}
+            <span class="blog-read-time">
+                {{ partial "icons/clock" . }}
+                {{ . }} min read
+            </span>
+            {{ end }}
+        </div>
+        
+        {{ if .Params.featuredImage }}
+        <div class="blog-featured-image">
+            <img src="{{ .Params.featuredImage }}" alt="{{ .Title }}">
+        </div>
+        {{ end }}
+    </header>
+    
+    <div class="blog-content">
+        {{ .Content }}
+    </div>
+    
+    {{ if .Params.tags }}
+    <footer class="blog-footer">
+        <div class="blog-tags">
+            {{ partial "icons/tag" . }}
+            {{ range .Params.tags }}
+            <a href="/tags/{{ . | urlize }}" class="blog-tag">{{ . }}</a>
+            {{ end }}
+        </div>
+        
+        <div class="blog-share">
+            <span class="share-label">Share:</span>
+            <a href="https://twitter.com/intent/tweet?text={{ .Title }}&url={{ .Permalink }}" target="_blank" rel="noopener" class="share-link share-twitter">
+                {{ partial "icons/x" . }}
+            </a>
+            <a href="https://www.facebook.com/sharer/sharer.php?u={{ .Permalink }}" target="_blank" rel="noopener" class="share-link share-facebook">
+                {{ partial "icons/facebook" . }}
+            </a>
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ .Permalink }}&title={{ .Title }}" target="_blank" rel="noopener" class="share-link share-linkedin">
+                {{ partial "icons/linkedin" . }}
+            </a>
+        </div>
+    </footer>
+    {{ end }}
+
+    {{ $hasPrev := .PrevInSection }}
+    {{ $hasNext := .NextInSection }}
+    {{ if or $hasPrev $hasNext }}
+    <nav class="blog-navigation">
+        {{ with .PrevInSection }}
+        <a href="{{ .Permalink }}" class="nav-prev">
+            <span class="nav-label">Previous</span>
+            <span class="nav-title">{{ .Title }}</span>
+        </a>
+        {{ end }}
+        
+        {{ with .NextInSection }}
+        <a href="{{ .Permalink }}" class="nav-next">
+            <span class="nav-label">Next</span>
+            <span class="nav-title">{{ .Title }}</span>
+        </a>
+        {{ end }}
+    </nav>
+    {{ end }}
+</article>
+
+{{ if .Site.Params.blog.comments.enable | default false }}
+<section class="blog-comments">
+    <h2>Comments</h2>
+    {{ if .Site.Params.blog.comments.disqusShortname }}
+    {{ partial "comments/disqus" . }}
+    {{ else if .Site.Params.blog.comments.giscus.repo }}
+    {{ partial "comments/giscus" . }}
+    {{ else }}
+    <div class="comments-placeholder">
+        <p>Comments are disabled.</p>
+    </div>
+    {{ end }}
+</section>
+{{ end }}
+{{ end }}
